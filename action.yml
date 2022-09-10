@@ -1,0 +1,56 @@
+name: Set up SuiteCloud Development Framework SDK environment
+author: Mars Zhou
+description: |-
+  Downloads, installs, and configures a SuiteCloud Development Framework SDK environment.
+  Adds `sdfcli` command to the $PATH.
+
+inputs:
+  version:
+    description: |-
+      Version of the suitecloud SDK to install. If unspecified or set to "latest",
+      the latest available suitecloud SDK version for the target platform will be
+      installed. Example: "290.0.1".
+    default: latest
+    required: false
+
+  account:
+    description: |-
+      References the ID of the account to log in to.
+      Required if the -savetoken option is specified.
+    required: false
+
+  authid:
+    description: |-
+      References the custom alias you gave to a specific account-role combination.
+      If you do not have an authentication ID (authid) for a specific account-role combination, you 
+      create it by passing it as an option and giving it a custom name.
+      If you do not specify it, the default account is used.
+    required: false
+
+  savetoken:
+    description: Specifies a TBA token that you issued previously in NetSuite.
+    required: false
+
+  tokenid:
+    description: |-
+      Specifies the token ID of a TBA token you issued previously in NetSuite.
+      Required if the -savetoken option is specified.
+
+  tokensecret:
+    description: |-
+      Specifies the token secret of a TBA token you issued previously in NetSuite.
+      Required if the -savetoken option is specified.
+
+  url:
+    description: |-
+      References the URL used to access the account.
+      If it is not specified, the production URL is used. That is, a URL such as “system.netsuite.com”.
+      Not required when authenticating against system.netsuite.com.
+
+branding:
+  icon: "terminal"
+  color: "purple"
+
+runs:
+  using: "node16"
+  main: "dist/index.js"
